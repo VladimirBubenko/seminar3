@@ -132,31 +132,75 @@
 //Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 
-int [,] MultiArray (int [,] array1, int [,] array2)
-{
-    int [,] multiArray = new int [array1.GetLength(0), array2.GetLength(1)];
-    if (array1.GetLength(1) != array2.GetLength(0))
-        Console.WriteLine("Error");
-    else
-        for (int i = 0; i < array1.GetLength(0); i++)
-            for (int j = 0; j < array2.GetLength(1); j++)
-                for (int k = 0; k < array2.GetLength(0); k++)
-                    multiArray[i,j] += array1[i,k]*array2[k,j];
-    return multiArray;
-}
+// int [,] MultiArray (int [,] array1, int [,] array2)
+// {
+//     int [,] multiArray = new int [array1.GetLength(0), array2.GetLength(1)];
+//     if (array1.GetLength(1) != array2.GetLength(0))
+//         Console.WriteLine("Error");
+//     else
+//         for (int i = 0; i < array1.GetLength(0); i++)
+//             for (int j = 0; j < array2.GetLength(1); j++)
+//                 for (int k = 0; k < array2.GetLength(0); k++)
+//                     multiArray[i,j] += array1[i,k]*array2[k,j];
+//     return multiArray;
+// }
 
-int [,] NewArray ()
-{
-    Console.WriteLine("Введите размерность матрицы: ");
-    int [,] matrix = new int [Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine())];
-    for (int i = 0; i < matrix.GetLength(0); i++)
-        for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                Console.Write($"Элемент {i},{j} = ");
-                matrix [i,j] = Convert.ToInt32(Console.ReadLine());
-            }
-    return matrix;
-}
+// int [,] NewArray ()
+// {
+//     Console.WriteLine("Введите размерность матрицы: ");
+//     int [,] matrix = new int [Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine())];
+//     for (int i = 0; i < matrix.GetLength(0); i++)
+//         for (int j = 0; j < matrix.GetLength(1); j++)
+//             {
+//                 Console.Write($"Элемент {i},{j} = ");
+//                 matrix [i,j] = Convert.ToInt32(Console.ReadLine());
+//             }
+//     return matrix;
+// }
+
+// void Show2dArray(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write(array[i,j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
+
+// Console.WriteLine("Задайте матрицу А: ");
+// int [,] myArray = NewArray();
+// Show2dArray(myArray);
+
+// Console.WriteLine("Задайте матрицу В: ");
+// int [,] newArray = NewArray();
+// Show2dArray(newArray);
+
+// int [,] multiArray = MultiArray(myArray,newArray);
+// Show2dArray(multiArray);
+
+// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4. 
+ 
+    int [,] matrix = new int [4,4];
+    int number = 1;
+    int i = 0;
+    int j = 0;
+    while (number <= matrix.GetLength(0)*matrix.GetLength(1))
+    {
+        matrix [i,j] = number;
+        number++;
+        if (i<=j+1 && i + j < matrix.GetLength(1) - 1)
+            j++;
+        else if (i < j && i + j >= matrix.GetLength(0) - 1)
+            i++;
+        else if (i >= j && i+ j > matrix.GetLength(1) - 1)
+            j--;
+        else 
+            i--;
+    }
 
 void Show2dArray(int[,] array)
 {
@@ -171,13 +215,4 @@ void Show2dArray(int[,] array)
     Console.WriteLine();
 }
 
-Console.WriteLine("Задайте матрицу А: ");
-int [,] myArray = NewArray();
-Show2dArray(myArray);
-
-Console.WriteLine("Задайте матрицу В: ");
-int [,] newArray = NewArray();
-Show2dArray(newArray);
-
-int [,] multiArray = MultiArray(myArray,newArray);
-Show2dArray(multiArray);
+Show2dArray(matrix);
