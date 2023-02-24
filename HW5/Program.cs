@@ -105,11 +105,9 @@ double Result(double[] array)
     for (int i = 0; i < array.Length; i++)
         if(array[i] > max)
             max = array[i];
-
     for (int i = 0; i < array.Length; i++)
         if(array[i] < min)
             min = array[i];
-
     double result = max - min;
     return Math.Round(result,3);
 }
